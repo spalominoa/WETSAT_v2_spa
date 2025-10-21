@@ -64,7 +64,7 @@ GitHub Codespaces
 
 <a href='https://codespaces.new/sei-latam/WETSAT_v2?quickstart=1'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
 
-## Libraries, Systems and Frameworks
+## Libraries, Datasets and Frameworks
 
 <h2 align="left">
   
@@ -114,8 +114,15 @@ https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/sigm
 Version `1.0`
 
 ```HTML
-https://github.com/sei-latam/WEAP_WebAppRepWB/commits/Version1.0
+https://github.com/sei-latam/WETSAT
 ```
+
+Version `2.0`
+
+```HTML
+https://github.com/sei-latam/WETSAT_v2
+```
+
 
 ## Credits and repository of data
 
