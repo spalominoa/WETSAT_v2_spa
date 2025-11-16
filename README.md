@@ -102,6 +102,25 @@ GitHub Codespaces
 !pip install numpy
 !pip install contextily
 !pip install geopandas
+
+## Geoprocessing packages
+import rasterio
+from rasterio.features import rasterize
+import numpy as np
+import geopandas as gpd
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+import gc  # Garbage collector to free memory
+import os
+import contextily as ctx
+from shapely.geometry import box
+import seaborn as sns
+import joblib
+import urllib.request
+import warnings
+from google.colab import files
+from google.colab import data_table
 ```
 
 <h2 align="left">
