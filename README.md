@@ -29,7 +29,9 @@ WetSAT-ML Version 2.0
 </table>
 </div>
 
-## Description
+# 🛰️ WetSAT-ML v2.0 User Manual
+
+## General Summary
 
 <h4 align="justify">
 WetSAT-ML (Wetlands flooding extent and trends using SATellite data and Machine Learning) version 2.0, It consists of an open-source algorithm integrated with platforms such as: 
@@ -51,42 +53,24 @@ The tool WETSAT_v2 allow users to:
 
 <img src="https://github.com/sei-latam/WETSAT_v2/blob/a32a41369cbfbe45c018c473519d4423a083e461/WetSAT%20Design.png" alt="Figure 1. WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning." width="100%"/>
 
-
 </div>
 
-</h4>
+## Repository Structure 📁
 
-
-<h2 align="left">
-  
-Master Script Code from Google Colab </a> <a href="https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb" target="_blank" rel="noreferrer"> 
-<img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
-</h2>
-  
 ```html
-https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb
+WETSAT_v2/
+├── 0_Original_Files/
+│   ├── aoi1/
+│   └── aoi2/
+│       ├── sigma_dB/
+│       │   ├── VH/
+│       │   ├── VV/
+│       │   └── PR_index/
+│       └── points_AOI2_BDE.shp
+├── models/
+└── README.md
 ```
-## Use and install this repository
-
-HTTPS
-```html
-https://github.com/sei-latam/WETSAT_v2.git
-```
-
-GitHub SSH
-```html
-git@github.com:sei-latam/WETSAT_v2.git
-```
-
-GitHub CLI
-```html
-gh repo clone sei-latam/WETSAT_v2
-```
-GitHub Codespaces
-
-<a href='https://codespaces.new/sei-latam/WETSAT_v2?quickstart=1'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
-
-## Libraries, Datasets and Frameworks
+## (1.0) Installation of packages and libraries ⚙️
 
 <h2 align="left">
   
@@ -123,10 +107,52 @@ from google.colab import files
 from google.colab import data_table
 ```
 
+## (2.0) 🗺️ Images preparation (VV,VH and PR)
+Input Data:
+- VH and VV SAR images (.tif)
+- Compute PR Index
+```python
+(PR = VH - VV)
+```
+
+## (3.0) 🗺️ Labels and Marks preparation
+Input Data:
+- Import shapefile points with labels and marks 
+- Reproject shapefile to match raster CRS
+- Filter points within raster bounds
+- Extract pixel values at labeled points
+
+
+## (4.0) Connect Google Colab/GitHub
+
+### Option 1: Import manually Areas Of Interest (AOI) <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github" width="40" height="40"/> 
+```html
+https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1
+https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi2
+```
+
+### Option 2: Clone the repository of GitHub
+
+HTTPS
+```html
+https://github.com/sei-latam/WETSAT_v2.git
+```
+GitHub SSH
+```html
+git@github.com:sei-latam/WETSAT_v2.git
+```
+GitHub CLI
+```html
+gh repo clone sei-latam/WETSAT_v2
+```
+
+
 <h2 align="left">
   
 ![Static Badge](https://img.shields.io/badge/ScikitLearn-blue) </a><a href="https://scikit-learn.org/" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit_learn" width="40" height="40"/> 
 </h2>
+
+## (5.0) Import the Random Forest Model and dependences of Machine Learning 🧠
 
 ```Python
 from sklearn.ensemble import RandomForestClassifier
@@ -141,15 +167,76 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 ```
 
+## (6.0) Prepare the Random Forest Model 🔠
+
+- Prepare Training Data (70%)
+- Prepare Validation Data (30%)
+- Store Data in pickle (.pkl) formats, for example ----> joblib.dump(le, "/models/label_encoder.pkl")
+- Display Data
+
+## 7.0 Training Random Forest Model 🌲
+
+- Train a Random Forest classifier with hyperparameter tuning:
+- Save the best model in pickle (.pkl) format, for example ----> joblib.dump(best_model, "/models/modelo_random_forest.pkl")
+```Python
+param_grid = {
+    'n_estimators': [100, 200],
+    'max_depth': [10, 20, None],
+    'min_samples_split': [2, 5],
+    'min_samples_leaf': [1, 2],
+    'max_features': ['sqrt', 'log2']
+}
+```
+
+
+</h4>
+
+
+
+
+
+📊 9. Model Evaluation
+Outputs include:
+- Accuracy score
+- Best hyperparameters
+- Confusion matrix
+- Classification report
+
+🧪 10. Forecasting New AOIs
+Use the trained model to predict labels for new images:
+predict_and_save(vv_file, vh_file, pr_file, model, encoder, index)
+
+
+Predicted maps are saved as:
+Forecasting_labels_XX.tif
+
+
+
+📌 11. Infographic Reference
+Refer to the included infographic for a visual summary of the workflow:
+- Steps 1–9 match the code modules
+- Color-coded maps show flooding extents
+- Accuracy metrics validate model performance
+
+
 <h2 align="left">
   
-![Static Badge](https://img.shields.io/badge/GitHub-gray) </a><a href="https://github.com/" target="_blank" rel="noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github" width="40" height="40"/> 
+Master Script Code from Google Colab </a> <a href="https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb" target="_blank" rel="noreferrer"> 
+<img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
 </h2>
-
+  
 ```html
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi2
+https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb
 ```
+## Use and install this repository
+
+
+GitHub Codespaces
+
+<a href='https://codespaces.new/sei-latam/WETSAT_v2?quickstart=1'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
+
+## Libraries, Datasets and Frameworks
+
 
 
 ## Versions and releases
