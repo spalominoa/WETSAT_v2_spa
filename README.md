@@ -38,7 +38,18 @@ WetSAT-ML (Wetlands flooding extent and trends using SATellite data and Machine 
 Google Earth Engine, <img src="https://images.icon-icons.com/1508/PNG/512/googleearth-engine_104576.png" alt="HTML" width="20" height="20"/>
 Google Colab, <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" alt="HTML" width="20" height="20" />
 and  Scikit Learn <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="HTML" width="20" height="20" />
-.The tool will process radar satellite data from the Sentinel-1 mission to generate wetland flooding extent maps, water permanence maps, and quantify key hydrological parameters, including flooded area time series, hydroperiods, and intra- and inter-annual wetland area trends. The algorithm will use machine learning models to characterize the scattering behavior of the radar signal for different wetland flooding conditions, enabling a pixel-level water detection in the satellite images 
+.The tool will process radar satellite data from the Sentinel-1 mission to generate wetland flooding extent maps, water permanence maps, and quantify key hydrological parameters, including flooded area time series, hydroperiods, and intra- and inter-annual wetland area trends. The algorithm will use machine learning models to characterize the scattering behavior of the radar signal for different wetland flooding conditions, enabling a pixel-level water detection in the satellite images.
+
+<h2 align="left">
+  
+Master Script Code from Google Colab </a> <a href="https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb" target="_blank" rel="noreferrer"> 
+<img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
+</h2>
+  
+```html
+https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb
+```
+
 
 The tool WETSAT_v2 allow users to:
 
@@ -174,7 +185,7 @@ from sklearn.pipeline import Pipeline
 - Store Data in pickle (.pkl) formats, for example ----> joblib.dump(le, "/models/label_encoder.pkl")
 - Display Data
 
-## 7.0 Training Random Forest Model 🌲
+## 7.0 and 8.0: Training Random Forest Model 🌲
 
 - Train a Random Forest classifier with hyperparameter tuning:
 - Save the best model in pickle (.pkl) format, for example ----> joblib.dump(best_model, "/models/modelo_random_forest.pkl")
@@ -188,56 +199,26 @@ param_grid = {
 }
 ```
 
-
-</h4>
-
-
-
-
-
-📊 9. Model Evaluation
-Outputs include:
+## 9.0 Evaluate the Random Forest Model 📊
 - Accuracy score
 - Best hyperparameters
 - Confusion matrix
 - Classification report
 
-🧪 10. Forecasting New AOIs
-Use the trained model to predict labels for new images:
-predict_and_save(vv_file, vh_file, pr_file, model, encoder, index)
+## 10.0 Forecasting Wetlands and Maps 🧪 (you can to forecasting actual or news AOI's)
+
+- Import the pickle files previously created (model, encoders and labels)
+- Add news images (VV, VH and PR), if you don't have PR index, you can to recalculate the PR index following the equation (PR = VH - VV)
+- Upload the model and make predictions
 
 
-Predicted maps are saved as:
-Forecasting_labels_XX.tif
+## 11.0 and 12.0 Transform predicted values (categorical and numerical) to legend and export images
 
+- Use encoder label to transform values (optional) 📌
+- Export to raster (.tif) images in AOI selected, for example -----> Forecasting_labels_XX.tif
+- Open the raster images predicted in Open Source GIS, for example QGIS
 
-
-📌 11. Infographic Reference
-Refer to the included infographic for a visual summary of the workflow:
-- Steps 1–9 match the code modules
-- Color-coded maps show flooding extents
-- Accuracy metrics validate model performance
-
-
-<h2 align="left">
-  
-Master Script Code from Google Colab </a> <a href="https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb" target="_blank" rel="noreferrer"> 
-<img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
-</h2>
-  
-```html
-https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb
-```
-## Use and install this repository
-
-
-GitHub Codespaces
-
-<a href='https://codespaces.new/sei-latam/WETSAT_v2?quickstart=1'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
-
-## Libraries, Datasets and Frameworks
-
-
+</h4>
 
 ## Versions and releases
 
@@ -252,8 +233,6 @@ Version `2.0`
 ```HTML
 https://github.com/sei-latam/WETSAT_v2
 ```
-
-
 
 ## Credits and repository of data
 
