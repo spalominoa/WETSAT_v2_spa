@@ -29,10 +29,13 @@ WetSAT-ML Version 2.0
 </table>
 </div>
 
-## Description and Methodology
+## Description
 
-WetSAT-ML 2.0 (Wetlands flooding extent and trends using SATellite data and Machine Learning) is an open-source in Google Colab package developed by SEI Latin America. It enables monitoring of wetland flooding dynamics using
-Sentinel-1 radar imagery combined with machine learning algorithms.
+WetSAT-ML (Wetlands flooding extent and trends using SATellite data and Machine Learning) version 2.0, It consists of an open-source algorithm integrated with cloud platform such as: Google Earth Engine </a> <a href="https://earthengine.google.com/" target="_blank" rel="noreferrer"> <img src="https://images.icon-icons.com/1508/PNG/512/googleearth-engine_104576.png" alt="HTML" width="40" height="40"/>, Google Colab </a> <a href="https://colab.research.google.com/" target="_blank" rel="noreferrer"> 
+<img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
+
+and databases. The tool will process radar satellite data from the Sentinel-1 mission to generate wetland flooding extent maps, water permanence maps, and quantify key hydrological parameters, including flooded area time series, hydroperiods, and intra- and inter-annual wetland area trends. The algorithm will use machine learning models to characterize the scattering behavior of the radar signal for different wetland flooding conditions, enabling a pixel-level water detection in the satellite images
+
 
 <div class="figure" style="text-align: left">
 <img src="https://github.com/sei-latam/WETSAT/blob/main/Methodology.png" alt="Figure 1. WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning." width="100%" />
