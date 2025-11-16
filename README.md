@@ -95,13 +95,13 @@ GitHub Codespaces
 
 ```Python
 ###################################### Artificial Intelligence Frameworks #####################################################
-# scikit-learn Framework
 !pip install scikit-learn
 ###################################### Data, Geoprocessing and Graphics libraries #####################################################
 !pip install rasterio
 !pip install matplotlib
 !pip install numpy
 !pip install contextily
+!pip install geopandas
 ```
 
 <h2 align="left">
@@ -124,15 +124,12 @@ from sklearn.pipeline import Pipeline
 
 <h2 align="left">
   
-![Static Badge](https://img.shields.io/badge/GitHub-gray) </a><a href="https://github.com/" target="_blank" rel="noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="tensorflow" width="40" height="40"/> 
+![Static Badge](https://img.shields.io/badge/GitHub-gray) </a><a href="https://github.com/" target="_blank" rel="noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github" width="40" height="40"/> 
 </h2>
 
 ```html
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/gamma_dB
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/gamma_power
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/points_AOI1_Mask
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/sigma_dB
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/sigma_power
+https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1
+https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi2
 ```
 
 
