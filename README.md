@@ -44,39 +44,20 @@ The tool WETSAT_v2 allow users to:
 - Produce water permanence maps.
 - Extract flooded area time series.
 - Quantify intra-annual and inter-annual wetland hydrological trends.
+
+<div class="figure" style="text-align: left">
+  
+<p class="caption"> WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning.</p>
+
+<img src="https://github.com/sei-latam/WETSAT_v2/blob/a32a41369cbfbe45c018c473519d4423a083e461/WetSAT%20Design.png" alt="Figure 1. WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning." width="100%"/>
+
+
+</div>
+
 </h4>
 
 
-
-
-
-<div class="figure" style="text-align: left">
-<img src="https://github.com/sei-latam/WETSAT/blob/main/Methodology.png" alt="Figure 1. WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning." width="100%" />
-<p class="caption">
-Figure 1. WetSAT-ML methodology workflow for generating wetland flooding
-extent and trends using Sentinel-1 data and machine learning.
-</p>
-</div>
-
-
-WetSAT-ML uses Sentinel-1 Synthetic Aperture Radar (SAR) data to map water extent, overcoming the limitations of optical data, which often fail in cloudy or dense vegetation conditions.
-
-The algorithm combines radar backscatter from VV and VH polarizations with five radar-derived indices:
-
-| Index | Formula |
-|----|----|
-| **PR - Polarized Ratio** | σ<sub>VH</sub><sup>0</sup> / σ<sub>VV</sub><sup>0</sup> |
-| **NDPI - Normalized Difference Polarized Index** | (σ<sub>VV</sub><sup>0</sup> − σ<sub>VH</sub><sup>0</sup>) / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-| **NVHI - Normalized VH Index** | σ<sub>VH</sub><sup>0</sup> / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-| **NVVI - Normalized VV Index** | σ<sub>VV</sub><sup>0</sup> / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-| **RVI - Radar Vegetation Index** | 4 · σ<sub>VH</sub><sup>0</sup> / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-
-These indices characterize the scattering behavior of radar signals
-under different wetland flooding conditions, enabling pixel-level water
-detection.
-
-
-<h2 align="center">
+<h2 align="left">
   
 Master Script Code from Google Colab </a> <a href="https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb" target="_blank" rel="noreferrer"> 
 <img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
