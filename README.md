@@ -29,44 +29,18 @@ WetSAT-ML Version 2.0
 </table>
 </div>
 
-## Description and Methodology
+# 🛰️ WetSAT-ML v2.0 User Manual
 
-WetSAT-ML 2.0 (Wetlands flooding extent and trends using SATellite data and Machine Learning) is an open-source in Google Colab package developed by SEI Latin America. It enables monitoring of wetland flooding dynamics using
-Sentinel-1 radar imagery combined with machine learning algorithms.
+## General Summary
 
-<div class="figure" style="text-align: left">
-<img src="https://github.com/sei-latam/WETSAT/blob/main/Methodology.png" alt="Figure 1. WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning." width="100%" />
-<p class="caption">
-Figure 1. WetSAT-ML methodology workflow for generating wetland flooding
-extent and trends using Sentinel-1 data and machine learning.
-</p>
-</div>
+<h4 align="justify">
+WetSAT-ML (Wetlands flooding extent and trends using SATellite data and Machine Learning) version 2.0, It consists of an open-source algorithm integrated with platforms such as: 
+Google Earth Engine, <img src="https://images.icon-icons.com/1508/PNG/512/googleearth-engine_104576.png" alt="HTML" width="20" height="20"/>
+Google Colab, <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" alt="HTML" width="20" height="20" />
+and  Scikit Learn <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="HTML" width="20" height="20" />
+.The tool will process radar satellite data from the Sentinel-1 mission to generate wetland flooding extent maps, water permanence maps, and quantify key hydrological parameters, including flooded area time series, hydroperiods, and intra- and inter-annual wetland area trends. The algorithm will use machine learning models to characterize the scattering behavior of the radar signal for different wetland flooding conditions, enabling a pixel-level water detection in the satellite images.
 
-The tool WETSAT_v2 allow users to:
-
-- Generate wetland flooding extent maps.
-- Produce water permanence maps.
-- Extract flooded area time series.
-- Quantify intra-annual and inter-annual wetland hydrological trends.
-
-WetSAT-ML uses Sentinel-1 Synthetic Aperture Radar (SAR) data to map water extent, overcoming the limitations of optical data, which often fail in cloudy or dense vegetation conditions.
-
-The algorithm combines radar backscatter from VV and VH polarizations with five radar-derived indices:
-
-| Index | Formula |
-|----|----|
-| **PR - Polarized Ratio** | σ<sub>VH</sub><sup>0</sup> / σ<sub>VV</sub><sup>0</sup> |
-| **NDPI - Normalized Difference Polarized Index** | (σ<sub>VV</sub><sup>0</sup> − σ<sub>VH</sub><sup>0</sup>) / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-| **NVHI - Normalized VH Index** | σ<sub>VH</sub><sup>0</sup> / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-| **NVVI - Normalized VV Index** | σ<sub>VV</sub><sup>0</sup> / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-| **RVI - Radar Vegetation Index** | 4 · σ<sub>VH</sub><sup>0</sup> / (σ<sub>VV</sub><sup>0</sup> + σ<sub>VH</sub><sup>0</sup>) |
-
-These indices characterize the scattering behavior of radar signals
-under different wetland flooding conditions, enabling pixel-level water
-detection.
-
-
-<h2 align="center">
+<h2 align="left">
   
 Master Script Code from Google Colab </a> <a href="https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb" target="_blank" rel="noreferrer"> 
 <img width="20" height="20" alt="image" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-colab-icon.png" />
@@ -75,27 +49,39 @@ Master Script Code from Google Colab </a> <a href="https://colab.research.google
 ```html
 https://colab.research.google.com/github/CarlosMendez1997Sei/WETSAT_v2/blob/main/2_Modelling_WETSAT_Google_Colab/Wetsat_Geoprocessing.ipynb
 ```
-## Use and install this repository
 
-HTTPS
+
+The tool WETSAT_v2 allow users to:
+
+- Generate wetland flooding extent maps.
+- Produce water permanence maps.
+- Extract flooded area time series.
+- Quantify intra-annual and inter-annual wetland hydrological trends.
+
+<div class="figure" style="text-align: left">
+  
+<p class="caption"> WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning.</p>
+
+<img src="https://github.com/sei-latam/WETSAT_v2/blob/a32a41369cbfbe45c018c473519d4423a083e461/WetSAT%20Design.png" alt="Figure 1. WetSAT-ML methodology workflow for generating wetland flooding extent and trends using Sentinel-1 data and machine learning." width="100%"/>
+
+</div>
+
+## Repository Structure 📁
+
 ```html
-https://github.com/sei-latam/WETSAT_v2.git
+WETSAT_v2/
+├── 0_Original_Files/
+│   ├── aoi1/
+│   └── aoi2/
+│       ├── sigma_dB/
+│       │   ├── VH/
+│       │   ├── VV/
+│       │   └── PR_index/
+│       └── points_AOI2_BDE.shp
+├── models/
+└── README.md
 ```
-
-GitHub SSH
-```html
-git@github.com:sei-latam/WETSAT_v2.git
-```
-
-GitHub CLI
-```html
-gh repo clone sei-latam/WETSAT_v2
-```
-GitHub Codespaces
-
-<a href='https://codespaces.new/sei-latam/WETSAT_v2?quickstart=1'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
-
-## Libraries, Datasets and Frameworks
+## (1.0) Installation of packages and libraries ⚙️
 
 <h2 align="left">
   
@@ -104,41 +90,135 @@ GitHub Codespaces
 
 ```Python
 ###################################### Artificial Intelligence Frameworks #####################################################
-# scikit-learn Framework
 !pip install scikit-learn
 ###################################### Data, Geoprocessing and Graphics libraries #####################################################
 !pip install rasterio
 !pip install matplotlib
 !pip install numpy
 !pip install contextily
+!pip install geopandas
+
+## Geoprocessing packages
+import rasterio
+from rasterio.features import rasterize
+import numpy as np
+import geopandas as gpd
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+import gc  # Garbage collector to free memory
+import os
+import contextily as ctx
+from shapely.geometry import box
+import seaborn as sns
+import joblib
+import urllib.request
+import warnings
+from google.colab import files
+from google.colab import data_table
 ```
+
+## (2.0) 🗺️ Images preparation (VV,VH and PR)
+Input Data:
+- VH and VV SAR images (.tif)
+- Compute PR Index
+```python
+(PR = VH - VV)
+```
+
+## (3.0) 🗺️ Labels and Marks preparation
+Input Data:
+- Import shapefile points with labels and marks 
+- Reproject shapefile to match raster CRS
+- Filter points within raster bounds
+- Extract pixel values at labeled points
+
+
+## (4.0) Connect Google Colab/GitHub
+
+### Option 1: Import manually Areas Of Interest (AOI) <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github" width="40" height="40"/> 
+```html
+https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1
+https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi2
+```
+
+### Option 2: Clone the repository of GitHub
+
+HTTPS
+```html
+https://github.com/sei-latam/WETSAT_v2.git
+```
+GitHub SSH
+```html
+git@github.com:sei-latam/WETSAT_v2.git
+```
+GitHub CLI
+```html
+gh repo clone sei-latam/WETSAT_v2
+```
+
 
 <h2 align="left">
   
 ![Static Badge](https://img.shields.io/badge/ScikitLearn-blue) </a><a href="https://scikit-learn.org/" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit_learn" width="40" height="40"/> 
 </h2>
 
+## (5.0) Import the Random Forest Model and dependences of Machine Learning 🧠
+
 ```Python
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.svm import SVC
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.impute import SimpleImputer
+from sklearn.multioutput import MultiOutputClassifier
+from sklearn.preprocessing import LabelEncoder
+from sklearn.exceptions import UndefinedMetricWarning
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.pipeline import Pipeline
 ```
 
-<h2 align="left">
-  
-![Static Badge](https://img.shields.io/badge/GitHub-gray) </a><a href="https://github.com/" target="_blank" rel="noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="tensorflow" width="40" height="40"/> 
-</h2>
+## (6.0) Prepare the Random Forest Model 🔠
 
-```html
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/gamma_dB
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/gamma_power
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/points_AOI1_Mask
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/sigma_dB
-https://github.com/sei-latam/WETSAT_v2/tree/main/0_Original_Files/aoi1/aoi1/sigma_power
+- Prepare Training Data (70%)
+- Prepare Validation Data (30%)
+- Store Data in pickle (.pkl) formats, for example ----> joblib.dump(le, "/models/label_encoder.pkl")
+- Display Data
+
+## 7.0 and 8.0: Training Random Forest Model 🌲
+
+- Train a Random Forest classifier with hyperparameter tuning:
+- Save the best model in pickle (.pkl) format, for example ----> joblib.dump(best_model, "/models/modelo_random_forest.pkl")
+```Python
+param_grid = {
+    'n_estimators': [100, 200],
+    'max_depth': [10, 20, None],
+    'min_samples_split': [2, 5],
+    'min_samples_leaf': [1, 2],
+    'max_features': ['sqrt', 'log2']
+}
 ```
 
+## 9.0 Evaluate the Random Forest Model 📊
+- Accuracy score
+- Best hyperparameters
+- Confusion matrix
+- Classification report
+
+## 10.0 Forecasting Wetlands and Maps 🧪 (you can to forecasting actual or news AOI's)
+
+- Import the pickle files previously created (model, encoders and labels)
+- Add news images (VV, VH and PR), if you don't have PR index, you can to recalculate the PR index following the equation (PR = VH - VV)
+- Upload the model and make predictions
+
+
+## 11.0 and 12.0 Transform predicted values (categorical and numerical) to legend and export images
+
+- Use encoder label to transform values (optional) 📌
+- Export to raster (.tif) images in AOI selected, for example -----> Forecasting_labels_XX.tif
+- Open the raster images predicted in Open Source GIS, for example QGIS
+
+</h4>
 
 ## Versions and releases
 
@@ -153,8 +233,6 @@ Version `2.0`
 ```HTML
 https://github.com/sei-latam/WETSAT_v2
 ```
-
-
 
 ## Credits and repository of data
 
